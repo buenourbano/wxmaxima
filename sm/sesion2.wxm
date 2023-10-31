@@ -1,0 +1,524 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Gráficos con Maxima
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Funciones
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Se pueden definir funciones de una o varias variables y con valores escalares o 
+vectoriales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):=cos(x^2)*x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(g(x),integrate(sin(x)*cos(3*x),x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fundef(g);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+functions;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(x,y):=[x+y,x-y,x*y];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(1,0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Se pueden definir funciones a trozos utilizando un if-then-else
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z(x):= if x<0 then cos(x) else sin(x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z(1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z(-1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Listas
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una lista es una coleccion ordenada de objetos. Por ejemplo, un vector. Se escriben
+entre corchetes y los elementos se separan con comas. Podemos asignarle un nombre
+para usarlas despues.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:[1,2,4,-1,3];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+makelist(expresion,variable,valor inicial,valor final) genera una lista de acuerdo
+a la expresion. La variable toma los valores entre el inicial y el final de uno en uno.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Por ejemplo, la siguiente orden genera la lista de los cuadrados de los 
+primeros 10 naturales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(i^2,i,1,10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+La siguiente orden genera 5 numeros aleatorios entre cero y 10
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(random(10.0),k,1,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Gráficos con plot2d
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Echar un vistazo al menú
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([cos(x),sin(x)], [x,-5,5],
+ [plot_format, gnuplot],
+ [gnuplot_postamble, "set zeroaxis;"])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Gráficos con draw
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Cargar el paquete draw en primer lugar
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(draw);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Un grafico con draw tiene el siguiente aspecto (en el plano)
+
+draw2d(
+    opcion,
+    opcion,
+    dibujo1,
+    opcion,
+    opcion,
+    dibujo2,
+    opcion,
+    ...
+    opciones globales);
+
+El prefijo wx muestra el grafico resultante en la misma ventana en lugar
+de en una ventana separada.
+
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+explicit
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+explicit(funcion,variable,a,b) grafica de la funcion en el intervalo [a,b]
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    explicit(log(x),x,0,5)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Si queremos representar mas de una funcion, cada una puede tener su dominio
+y opciones particulares de representacion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    color = blue, /* color del trazo */
+    line_width = 3, /* grosor del trazo */
+    explicit(atan(x),x,-10,10), 
+    color = green,
+    line_width = 1,
+    explicit(cos(x)+sin(x),x,0,2*%pi),
+    xrange = [-2,15], /* opcion global, rango de la variable x que se representa */
+    yrange = [-3,3] /* lo mismo para la segunda variable */
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+implicit
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+implicit(ecuacion,x,a,b,y,c,d) representa los puntos del conjunto [a,b]x[c,d] que 
+cumplen la ecuacion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Por ejemplo, una circunferencia centrada en (1,2) y de radio 3 tiene como ecuacion
+(x-1)^2+(y-2)^2=3^2
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    implicit((x-1)^2+(y-2)^2=3^2,x,-3,3,y,-1,6)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+points 
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+points(lista de puntos) 
+
+points(lista de primeras coordenadas,lista de segundas coordenadas)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    point_size = 3,
+    point_type = filled_circle,
+    points([[0,0],[2,-1],[1,-0.2]])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Obtenemos el mismo resultado escribiendo por separado primeras y segundas coordenadas
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    point_size = 3,
+    point_type = filled_circle,
+    points([0,2,1],[0,-1,-0.2])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Observa que aunque solo queramos representar un punto necesitamos una lista de puntos
+y, por tanto, tenemos dobles corchetes
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    point_size = 3,
+    point_type = filled_circle,
+    points([[0,0]])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+rectangle  
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+rectangle([a,b],[c,d]) rectangulo con vertices [a,b] (inferior izquierdo)
+y [c,d] (superior derecho)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    color = blue,
+    fill_color = yellow,
+    line_width = 4,
+    rectangle([0,0],[4,4]),
+    color = green,
+    transparent = true, /* no se rellena */
+    rectangle([1,-1],[2,7])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+ellipse
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+ellipse(centrox,centroy,a,b,grado1,grado2) elipse centrada en (centrox,centroy) con 
+semiejes a y b. Se comienza a dibujar en grado 1 y se dibuja durante tantos grados como
+indique grado2.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    color = cyan,
+    line_width=5,
+    nticks = 100, /* numero de puntos que se usa para dibujar */
+    ellipse(0,0,3,2,0,360)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Si el ultimo valor es menor que 360 no se la dibuja entera. 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    ellipse(0,0,2,2,45,270),
+    color = blue,
+    fill_color = yellow,
+    ellipse(0.5,1.5,0.2,0.2,0,360)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una circunferencia es una elipse con los semiejes iguales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    transparent = true,
+    nticks = 25,
+    ellipse(0,0,1,1,0,360),
+    user_preamble = "set size ratio 1" /* dibuja los dos ejes del mismo tamaño en la pantalla */
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+vector
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+vector([a,b],[dx,dy]) vector con origen en (a,b) y final en (a+dx,b+dy)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    head_angle = 30, /* angulo de la punta de la flecha */
+    head_length = 0.1, /* tamano de la punta de flecha */
+    color = goldenrod,
+    vector([1,0],[2,-2]),
+    head_angle = 20,
+ head_length = 0.2,
+    color = purple,
+    vector([-1,0],[0,2]),
+    xrange = [-2,4],
+    yrange = [-3,3]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+parametric
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+parametric(x(t),y(t),t,a,b) representa la curva en forma 
+parametrica (x(t),y(t)) con t entre a y b 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+El cicloide es la curva que describiría un punto de una circunferencia 
+que avanza girando sin deslizar
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    nticks=100,
+    parametric(t-sin(t),1-cos(t),t,0,6*%pi),
+    xrange = [-1,20],
+    yrange = [-0.2,2],
+    user_preamble = "set zeroaxis"
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Animaciones
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una animacion es un grafico que varia con un parametro. 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Animaciones con plot
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+with_slider(
+    parametro,
+    valores del parametro,
+    grafico que depende del parametro
+);
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_slider(
+    k,
+    [1,2,3,4,5,6,7,8,9,10],
+    x^(k/10),[x,0,3],[y,0,2] /* esta linea se pasa a la orden plot2d */
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Animaciones con draw2d
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+with_slider_draw(
+    parametro,
+    valores del parametro,
+    grafico para draw2d que depende del parametro
+);
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Podemos ir aumentando el dominio donde dibujamos una funcion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_slider_draw(
+    k,
+    makelist(2*%pi*k/30,k,1,30),
+    explicit(cos(x),x,0,k),
+    xrange = [0,2*%pi],
+    yrange = [-1,1],
+    user_preamble = "set size ratio 0.3",
+    title = "la funcion coseno"
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+O cambiar las funciones que representamos (o cualquier cosa que se nos ocurra)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_slider_draw(
+    k,
+    makelist(k/10,k,1,30),
+    explicit(sin(k*x),x,0,10),
+    xrange = [0,10],
+    yrange = [-1,1]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Podemos añadir varias objetos a una misma animacion
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_slider_draw(
+    k,
+    makelist(2*%pi*k/40,k,1,40),
+    color = blue,
+    key = "seno",
+    explicit(sin(x),x,0,k),
+    color = red, 
+    key = "coseno",
+    parametric(cos(x),x,x,0,k),
+    key = "",
+    head_length = 0.1,
+    head_angle = 25,
+    color = purple,
+    vector([0,0],[cos(k),sin(k)]),
+    color = red,
+    vector([0,0],[cos(k),0]),
+    color = blue,
+    vector([0,0],[0,sin(k)]),
+    color = green,
+    transparent = true,
+    ellipse(0,0,1,1,0,360*k/(2*%pi)),
+    xrange = [-1,2*%pi],
+    yrange = [-1,2*%pi],
+    user_preamble = "set size ratio 1;set zeroaxis",
+    title = "la funcion coseno y la funcion seno"
+);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

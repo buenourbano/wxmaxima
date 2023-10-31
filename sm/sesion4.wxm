@@ -1,0 +1,466 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Programación
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(a:2,b:3,a+b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Bloque
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* block(
+    [variables locales],
+    local(funciones locales),
+    orden1,
+    orden2,
+    ...
+)
+da como respuesta la ultima entrada que tengamos; */
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+block(
+    [a,b], /* solo son locales aquellas variables que declaremos como tales */
+    a:4,
+    b:5,
+    a+b
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+block(
+    [a], /* solo son locales aquellas variables que declaremos como tales */
+    a:4,
+    b:7,
+    a+b
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+block(
+    [a:3,b:4],
+    a+b
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+block(
+    [a:3,b:4],
+    local(f),
+    define(f(x),x^3),
+    f(a+b)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Mostrar resultados por pantalla
+
+print(),
+display(),
+disp()
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+print("la suma de ",a," y ",b," es ",a+b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+display(a,b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+disp(a,b);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Forzar la salida en un paso intermedio
+
+return(num) devuelve num
+error(expr) devuelve un código de error y "expr"
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ejemplo
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(3),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(%e);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+loga(x,a):=log(x)/log(a)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+loga(10,10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+loga(100,10),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logb(x,a):=block(
+    if a<0 then error("La base no puede ser un número negativo"),
+    if a=1 then error("La base no puede ser 1"),
+    loga(x,a)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logb(3,7);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* logb(3,1); */
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Variables opcionales 
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* Se puede usar una lista como cajón de sastre 
+para incluir variables opcionales; */
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x,[y]):=flatten([x,y]); /* flatten aplasta una lista */;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(2,3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(2,3,4,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Volvamos a la función logaritmo
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+loga(x,[a]):=block(
+    if length(a)=0 then return(log(x)), 
+    if length(a)=1 then (
+        if a[1]=1 then error("la base #1"),
+        if a[1]<0 then error("la base positiva por favor"),
+        return(log(x)/log(a[1]))
+    )
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Bucles
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+for i:valor inicial thru valor final step paso do()
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma:0;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 100 do (suma:suma+i);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma:0;
+for i:1 thru 100 do (suma:suma+i);
+suma;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 10 do (
+    print("7 por ",i," vale ",7*i)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i:1 thru 10 step 2 do (
+    print("7 por ",i," vale ",7*i)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+¿Cuánto vale la suma de los primeros cien naturales?
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sumahastan(n):=block(
+    [suma:0],
+    for i:1 thru n do (suma:suma+i),
+    suma
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sumahastan(10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sumahastan(100);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ejemplo con while
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+i:0;
+while cos(i)>0 do (
+    i:i+0.2,
+    display(cos(i))
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+condicionales
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+if condicion then () else ()
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:-3;
+if a>0 then log(a) else a^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicios
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Calcula la media aritmética de los cuadrados de los
+primeros mil naturales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer:false$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1/2+1/3;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+0.5+1/3;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+suma:0.0;
+for i:1 thru 100 do (
+    suma:suma+1/i
+);
+suma;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Calcular el primer natural n tal que 
+1+1/2+1/3+...+1/n>7
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+i:0; /* paso o natural */
+suma:0.0; /* valor de la suma */
+while suma<7 do (
+    i:i+1,
+    suma:suma+1/i
+);
+i;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(x):=block(
+    [i:0,suma:0.0],
+    while suma<x do (
+        i:i+1,
+        suma:suma+1/i
+    ),
+    i
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(9);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+El método de bisección
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):=x^3-5$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d(f(x),[x,0,4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer:true$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:0.0;
+b:4.0;
+f(x):=x^2-4;
+for i:1 thru 10 do (
+    c:(a+b)/2, /* calculamos el punto medio */
+    if f(c)= 0 then return(c),
+    if f(a)*f(c)<0 then b:c else a:c,
+    print(" la solución en el paso ",i," vale ",c)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+5^(1/3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Primera versión de biseccion
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion(x^2-4,0,4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion(expr,extinf,extsup):=block(
+    [a:extinf,b:extsup,c],
+    local(f),
+    define(f(x),expr),
+    for i:1 thru 10 do (
+        c:(a+b)/2,
+        if f(c)=0 then return(),
+        if f(a)*f(c)<0 then b:c else a:c
+    ),
+    c    
+)$
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
