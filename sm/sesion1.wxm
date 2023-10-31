@@ -1,0 +1,375 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Primeros pasos
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Operaciones elementales
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Suma, producto, cociente, exponencial, raíz cuadrada
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+2+5;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+3*(2+3/4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+12^10;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sqrt(121);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sqrt(120);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+; y $ indican el fin de orden o separan varias órdenes
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+31^2;sqrt(4001);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Constantes
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+Constantes predefinas
+i,π,e,razón áurea
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+%i;
+%pi;
+%e;
+%phi;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(2+3*%i)/(4+3*%i);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Historial
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+% la última respuesta
+%i3 la tercera entrada
+%o2 la segunda respuesta
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+%^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Exacto vs aproximado
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+La variable numer o la entrada "numérico" del menu controla el comportamiento
+numer:true o false (modo numérico o exacto)
+
+float(numero) expresión decimal de un número
+bfloat(número) número con precisión real "grande"
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sqrt(2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sqrt(2),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(sqrt(2)),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer:true;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1/2+sqrt(3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer:false;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+1/2+sqrt(3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+La variable fpprec controla con cuantos dígitos se trabaja
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fpprec;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fpprec:5;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+bfloat(sqrt(5));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Los números en coma flotante grandes usan la notación b0,b1,.. que representa "por 10^(el número después de b)"
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+bfloat(sqrt(1241));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(sqrt(1241));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Funciones usuales
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+exp, sqrt, log, sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Los logaritmos son neperianos, se pueden calcular logaritmos en cualquier base
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(%e^3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(%e);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(10),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log10(x):=log(x)/log(10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log10(8),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Las funciones trigonométricas están en radianes
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cos(90),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cos(%pi/2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Más funciones
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+factorial, parte entera, valor absoluto, números aleatorios, max, min
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+3!;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entier(4.5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+entier(-0.1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+abs(-5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+random(3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+random(3.01);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Variables, constantes, funciones
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+largo:3;ancho:4;largo*ancho;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):=cos(x^2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(g(x),sin(x+2));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+g(1*f(2));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Mirar menu: variables, borrar,...
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Expresiones simbólicas
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+exp(log(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p:(x+3)^3;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+q:(x+1)*(x-2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p/q;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+expand, factor, partfrac
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+expand(p);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+expand(p/q);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p/q;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+partfrac(p/q,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+factor(x^2+3*x+2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Versiones para funciones trigonométricas
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+trigexpand(cos(x+y));
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

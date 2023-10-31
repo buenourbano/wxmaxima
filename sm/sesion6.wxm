@@ -1,0 +1,783 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+Miscelánea
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Álgebra lineal
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:matrix([1,2,3],[-1,0,3],[2,1,-1]);
+B:matrix([-1,1,1],[1,0,0],[-3,7,2]); 
+a:[1,2,1]; 
+b:[0,1,-1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A.a;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A*B;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A.B;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A^^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+determinant(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+invert(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+adjoint(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+transpose(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+triangularize(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+rank(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Escribir matrices
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+d[i,j]:=(i+j)*random(2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+D:genmatrix(d,3,3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+nullspace(D);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Valores propios
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+charpoly(A,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eigenvalues(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eigenvectors(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+lapack,ncharpoly
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+lapack y ncharpoly son paquete adicionales con más instrucciones
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Conjuntos
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:set(1,2,3,6,7,10);
+B:set(2,3,4,6,8);
+C:{1,2,3};
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+elementp(2,A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cardinality(A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+union(A,B);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+intersection(A,B);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+setdifference(A,B);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+powerset(C);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Listas y conjuntos
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+listify(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Listas y conjuntos
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+listify(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Listas y conjuntos
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+listify(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Listas y conjuntos
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+listify(C);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+veinte:setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+veinte:setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+equiv_classes(veinte,R);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+veinte:setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: subsect start ]
+Clases de equivalencia
+   [wxMaxima: subsect end   ] */
+/* [wxMaxima: fold    start ] */
+/* [wxMaxima: input   start ] */
+R(x,y):=is(remainder(x-y,5)=0);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+makelist(i,i,1,20);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+veinte:setify(%);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+equiv_classes(veinte,R);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: fold    end   ] */
+
+
+/* [wxMaxima: section start ]
+Cálculo
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Límites
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+limit(sin(x)/x,x,0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+limit(exp(-x^2)/x^3,x,inf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+limit(abs(x)/x,x,0,plus);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Series
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(n^2,n,1,10);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(n,n,1,k);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(n,n,1,k),simpsum;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(1/2^n,n,2,inf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(1/2^n,n,2,inf),simpsum;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sum(1/n^2,n,1,inf),simpsum;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lsum(1/n,n,[2,5,8,10]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Derivadas
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+diff(cos(x^2)*x,x,3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+diff(x*y*cos(x+y),x,2,y,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(df(x),diff(cos(x^2),x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Integrales
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(cos(2*x)/sin(x)^3,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(exp(-x^2),x,minf,inf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x)/x,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(sin(x)/x,x,1,2),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logabs:true;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(1/(x-2),x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logarc:false;
+integrate(sqrt(x^2+1),x);
+logarc:true;
+integrate(sqrt(x^2+1),x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logarc(asinh(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Integración numérica
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+quad_qags(exp(-x^3+x),x,0,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+romberg(exp(-x^3+x),x,1,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Interpolación
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+interpol
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("interpol");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+nodos:makelist([n^2,n],n,1,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+linearinterpol(nodos);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lagrange(nodos);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cspline(nodos);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ratinterpol(nodos,3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Taylor
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+taylor(cos(x),x,0,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+coeff(%,x,4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+powerseries(cos(x),x,0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Fourier
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("fourie");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fourier(x^2,x,%pi);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+foursin(x,x,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fourint(exp(-x^2)*x,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ecuaciones diferenciales
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Ecuaciones diferenciales ordinarias
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+edo:(2*x+3)*'diff(y,x)+y*(x-1)=0;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2(edo,y,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2(x^2*(3*y^2+1)+y*(2*x^3+y)*'diff(y,x),y,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2('diff(y,x)=x+y,y,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2('diff(y,x,2)-3*'diff(y,x)+2*y,y,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Condiciones iniciales o de contorno
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+edo;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2(edo,y,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ic1(%,x=0,y=2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Otro ejemplo
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ode2('diff(y,x,2)-'diff(y,x)=%e^x,y,x);
+ic2(%,x=0,y=0,'diff(y,x)=1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Fractales
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(fractals)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete,sierpinskiale(100000)], [style,dots])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete,treefale(150000)], [style,dots])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete,treefale(10000)], [style,dots])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot3d (mandelbrot_set, [x, -2.5, 1], [y, -1.5, 1.5],
+                [gnuplot_preamble, "set view map"],
+                [gnuplot_pm3d, true],
+                [grid, 150, 150])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot3d (julia_set, [x, -2, 1], [y, -1.5, 1.5],
+                [gnuplot_preamble, "set view map"],
+                [gnuplot_pm3d, true],
+                [grid, 150, 150])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ wxplot2d([discrete,snowmap([0,1,1+%i,%i,0],4)]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete,hilbertmap(5)]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxplot2d([discrete,sierpinskimap(5)]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Otros
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+- Fast Fourier Transform
+- Funciones elípticas
+- Estadística descriptiva
+- Grafos
+- Bases de Grobner
+- Mínimos cuadrados
+- Polinomios ortogonales: Chebyshev, Laguerre, Hermite, Jacobi, Legendre 
+- Método del simplex, programación lineal
+
+   [wxMaxima: comment end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

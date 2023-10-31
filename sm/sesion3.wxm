@@ -1,0 +1,581 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: section start ]
+Ecuaciones
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+expr1=expr2
+lhs(eq) 
+rhs(eq)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+3*x^2+2*x=1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq:3*x^2+2*x=1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lhs(eq);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+rhs(eq);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq-1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Resolución de ecuaciones con solve
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+solve
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([eq], [x]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+solve(lista de ecuaciones,lista de incógnitas)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(3*x^2+2*x-1=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(3*x^2+2*x-1,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(3*x^2+2*x-1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([x^2+y^2=1,x-y=1/4],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(x^3+x+1=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(x^7-2*x^6+2*x^5-2*x^4+x^3=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+multiplicities;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(a*x^2+b*x+c=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(e*x^4+a*x^3+b*x^2+c*x+d=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+solve no discute paramétros
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(sin(x)*cos(x)=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq1:x+1=sqrt(x+3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq1^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq1^2,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq1,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(x^2*(x^6+x+1)=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(x^6-x=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Como hacer referencia a las soluciones
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+map(funcion,lista) aplica la funcion a cada una de las
+entradas de la lista
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+map(cos,[1,2,3,4]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones:map(rhs,solve(eq,x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Sistemas de ecuaciones
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([x+3*y+z=0,x-y+z=1,x-y+3*z=7],[x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([x+3*y+z=0,x-y+z=1],[x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve((x+1)^2=x^2+2*x+1,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([x+y=0,x+y=1],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Como hacer referencia a las soluciones (2)
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:solve([x*y=1,x-y=1],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+map(rhs,lista);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+makelist(expr,contador,1,10)
+makelist(expr,contador,lista)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(i^2,i,[1,3,7]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(map(rhs,i),i,lista);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Operar con ecuaciones
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq:abs(x+1)=3*x+7;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq1,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq^2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq^2,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(eq1^2,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+subst(a,b,c) cambia en c, b por a
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(1,x,eq1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+subst(-2,x,eq1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+to_poly_solve
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve(eq,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eq1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve(eq1,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve(x^2+3*x+1=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve(x^6+x+1=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(sin(x)*cos(x)=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve(sin(x)*cos(x)=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+nicedummies(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Inecuaciones
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+to_poly_solve((x-1)/(x+1)<0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+fourier_elim
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(fourier_elim);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+fourier_elim(lista de ecuaciones, lista de variables)
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fourier_elim([x+y<1,abs(x)<1/2],[x,y]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+? region;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+? x_voxel;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+regi;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    x_voxel = 50,
+    y_voxel = 50,
+    region((-1/2<x and x<min(1/2,1-y) and y<3/2),
+        x,-3,3,y,-3,3)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Resolver ecuaciones algebraicas
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+allroots
+realroots
+nroots
+algsys
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+p:x^6+x+1;
+p1:x^4-3*x^3+x^2-4*x+12;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+allroots(p1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+realroots(p1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+realroots(p1,10^(-5));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+realroots(p1,10^(-10)),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+multiplicities;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+? multiplicities;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+nroots(p1,0,3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fpprec:4;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+bfallroots(p);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+algsys([x^3+x+1=0],[x]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ejercicio
+
+Dibuja la elipse centrada en el punto (1,1) de semiejes 4
+y 2 y los rectángulos de área sqrt(20) inscritos en ella
+
+Ejercicio 7.4 página 145
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    ellipse(1,1,4,2,0,360)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eli:x^2/16+y^2/4=1;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+area:4*x*y=sqrt(20);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones:solve([eli,area],[x,y]),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones:makelist(map(rhs,i),i,soluciones);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones[1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+soluciones[2][1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    fill_color = blue,
+    ellipse(0,0,4,2,0,360),
+    fill_color = red,
+    color = black,
+    rectangle(soluciones[1],soluciones[2]),
+    fill_color = green,
+    rectangle(soluciones[3],soluciones[4])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ejercicio 7.8
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+circ:x^2+y^2=1/4; /* circle of radius 1/4 centered at origin */
+bisec:x=y;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve([circ,bisec],[x,y]),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+-0.3535533905932737-(-0.5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+smallradius:0.1464466094067263/2;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    transparent = true,
+    rectangle([-1/2,-1/2],[1/2,1/2]),
+    ellipse(0,0,1/2,1/2,0,360),
+    rectangle([-1/2,-1/2],[-0.3535533905932737,-0.3535533905932737]),
+    proportional_axes = xy,
+    ellipse(-0.5+smallradius,-0.5+smallradius,smallradius,smallradius,0,360)
+);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

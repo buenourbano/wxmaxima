@@ -1,0 +1,590 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+EJERCICIOS DE EVALUACIÓN
+
+JESÚS BUENO URBANO - 20078941X
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sqrt(2+sqrt(3)),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cos(%pi/7),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(%i),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(40)/log(10),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+atan(%pi/5),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+exp(%i*%pi);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cosh(1+%i),numer;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Para comprobar  que las funciones son inversas las unas de las otras lo que haremos será componerlas para comprobar que sale la función identidad.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+cosh(acosh(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+sinh(asinh(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tanh(atanh(x));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Si hacemos las demás composiciones del tipo asinh(sinh(x)) no nos devuelve la función identidad debido a problemas con los intervalos de definición.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(f(x),cos(x)^2 - x*sin(x)^2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Vamos a elegir 5 equidistantes en el intervalo de definición.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    color       = red,
+    line_width  = 2,
+    explicit(f(x),x,-%pi,%pi),
+    color       = blue,
+    point_type  = filled_circle,   
+    point_size  = 1,
+    points(makelist([-%pi + 2*k*%pi/6,f(-%pi + 2*k*%pi/6)],k,1,5)),
+    xaxis       = true,
+    yaxis       = true,
+    yrange      = [-2,2]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ahora vamos a realizar la misma gráfica con puntos aleatorios.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:makelist(random(float(2*%pi))-%pi,k,1,8)$
+
+wxdraw2d(
+    color       = red,
+    line_width  = 2,
+    explicit(f(x),x,-%pi,%pi),
+    color       = blue,
+    point_type  = filled_circle,   
+    point_size  = 1,
+    points(makelist([lista[i],f(lista[i])],i,1,8)),
+    xaxis       = true,
+    yaxis       = true,
+    yrange      = [-2,2]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+color       = red,
+nticks      = 200,
+line_width  = 1,
+fill_color  = white,
+rectangle([2*cos(%pi/6 + %pi),4*sin(%pi/6)],[2*cos(-%pi/6),4*sin(-%pi/6)]),
+color       = blue,
+parametric(cos(t),sin(t),t,0,2*%pi),
+parametric(2*cos(t),4*sin(t),t,0,2*%pi),
+proportional_axes   = 'xy,
+xrange              = [-5,5],
+yrange              = [-5,5]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_slider_draw(t,
+makelist(%pi*i/10,i,1,20),
+parametric(x - sin(x),1 - cos(x),x,0,t),
+xrange=[-0.1,2*%pi+0.1],
+yrange=[0,2.1]
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist([random(1.0),random(1.0)],i,1,30);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:makelist(random(float(4*%pi)),k,1,10)$
+
+with_slider_draw(k,
+    makelist(k,k,1,10),
+    color       = red,
+    line_width  = 2,
+    explicit(cos(x),x,0,4*%pi),
+    color       = blue,
+    point_type  = filled_circle,
+    points(makelist([lista[j],cos(lista[j])],j,1,k)),
+    xrange      = [0,4*%pi],
+    yrange      = [-1.1,1.1]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+solve(x^2 + y^2 - 1 - x*y + sqrt(20),x);
+lhs(%)[1];
+r:rhs(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(R(t),subst(4*sin(t),y,r));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+raiz:find_root(R(t)-2*cos(t),t,0,%pi/2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+color       = red,
+nticks      = 200,
+line_width  = 1,
+fill_color  = white,
+rectangle([-2*cos(raiz),4*sin(raiz)],[2*cos(raiz),-4*sin(raiz)]),
+color       = blue,
+parametric(2*cos(t),4*sin(t),t,0,2*%pi),
+proportional_axes   = 'xy,
+xrange              = [-5,5],
+yrange              = [-5,5]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: comment start ]
+No lo he podido realizar de una forma satisfactoria.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Definimos un block que contiene un bucle ue no termina hasta que la suma parcial de la serie armonica supera el valor x dado, que aquí lo llamamos cota por razones obvias.
+Este block nos devuelve el número de iteraciones necesarias para superar el valor x.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(cota):=block(
+    [suma:0,i:1,n],
+    while suma<cota do(
+        suma:suma+1/i,
+        n:i,
+        i:i+1
+    ),
+    n
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ahora vamos a calcular los valores para x:7, x:8 y x:9
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(7);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(8);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+armonica(9);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numer:true;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Primero implementamos una versión del método de la bisección que definimos en clase que nos devuelve el valor y el número de pasos necesarios.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion_puntomedio(expr,var,extinf,extsup):=block(
+    [a:float(extinf),b:float(extsup),c, /* punto medio */ pasos, /* numero de pasos */ paso:1,errror:10^(-4)],
+    local(f,log2),
+    define(f(x),subst(x,var,expr)),
+    define(log2(x),log(x)/log(2)),
+    pasos:ceiling(log2((b-a)/errror)),
+    for i:1 thru pasos do (
+        c:(a+b)/2,
+        paso:i,
+        if f(c)=0 then return(),
+        if f(a)*f(c)<0 then b:c else a:c
+    ),
+    [c,paso]
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ahora modificamos este método para adecuarlo a lo que pide el ejercicio.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion_aleatorio(expr,var,extinf,extsup):=block(
+    [a:float(extinf),b:float(extsup),c, /* punto medio */ pasos, /* numero de pasos */ paso:1,errror:10^(-4)],
+    local(f,log2),
+    define(f(x),subst(x,var,expr)),
+    define(log2(x),log(x)/log(2)),
+    pasos:ceiling(log2((b-a)/errror)),
+    for i:1 thru pasos do (
+        c:random(b-a) + a, /* aquí está el cambio */
+        paso:i,
+        if f(c)=0 then return(),
+        if f(a)*f(c)<0 then b:c else a:c
+    ),
+    [c,paso]
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion_puntomedio(x^3-5,x,-10.0,10.0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion_aleatorio(x^3-5,x,-10.0,10.0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Tras evaluar repetidas veces el nuevo método que hemos elaborado vemos que éste a diferencia de tomar siempre el punto medio no nos devuelve un valor estable
+para el mismo número de pasos a diferencia de biseccion_puntomedio que siempre que lo ejecutamos nos devuelve el mismo valor.
+
+De hecho, en algunas pruebas biseccion_aleatorio ha llegado a variar hasta en una décima del valor ofrecido por biseccion_puntomedio por lo que, siendo probada
+la eficacia de biseccion_puntomedio, podemos adumir que biseccion_aleatorio no nos ofrece resultados muy fiables.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+secante(expr,var,x0,x1):=block(
+    [ini0:float(x0),ini1:float(x1),aux,errror:10^(-8)],
+    local(f),
+    define(f(x),subst(x,var,expr)),
+    while abs(ini1-ini0)>errror do (
+        aux:ini1,
+        ini1:ini1-(ini1-ini0)*f(ini1)/(f(ini1)-f(ini0)),
+        ini0:aux
+    ),
+    ini1
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+halley(expr,var,x0):=block(
+    [ini0:float(x0),aux:float(x0)+0.1,errror:10^(-8)],
+    local(f,g,h),
+    define(f(x),subst(x,var,expr)),
+    define(g(x),diff(f(x),x)),
+    define(h(x),diff(f(x),x,2)),
+    while abs(aux-ini0) > errror do (
+        aux:ini0,
+        ini0:ini0-2*f(ini0)*g(ini0)/(2*g(ini0)^2 - f(ini0)*h(ini0))
+    ),
+    ini0
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+biseccion(expr,var,extinf,extsup):=block(
+    [a:float(extinf),b:float(extsup),c, /* punto medio */ pasos, /* numero de pasos */ errror:10^(-8)],
+    local(f,log2),
+    define(f(x),subst(x,var,expr)),
+    define(log2(x),log(x)/log(2)),
+    pasos:ceiling(log2((b-a)/errror)),
+    for i:1 thru pasos do (
+        c:(a+b)/2,
+        if f(c)=0 then return(),
+        if f(a)*f(c)<0 then b:c else a:c
+    ),
+    c
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+newr(expr,var,ini):=block(
+    [x0:ini,x1],
+    local(f,df),
+    define(f(x),subst(x,var,expr)),
+    define(df(x),diff(f(x),x)),
+    for i:1 thru 10 do (
+        x1:x0-f(x0)/df(x0),
+        if abs(x0-x1)<10^(-8) then return()
+    ),
+    x1
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(f(x),cos(0.1*x+0.3)-0.95);
+define(g(x),sin(x)-x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+find_root(f(x),x,-1,1);
+secante(f(x),x,0.5,0.4);
+halley(f(x),x,0.5);
+biseccion(f(x),x,-1,1);
+newr(f(x),x,0.5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+find_root(g(x),x,-1/2,1/2);
+secante(g(x),x,0.3,0.4);
+halley(g(x),x,0.3);
+biseccion(g(x),x,-1/2,1/2);
+newr(g(x),x,0.3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Como vemos en ambos casos los métodos de la bisección de Halley tienen una convergencia más rápida.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Ejercicio
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Calculamos la el valor de x que no los divide en tres partes de identico área.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+assume(t>0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+raiz:find_root(2*integrate(sqrt(1-x^2),x,0,t)-%pi/6,t,0,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Lo dibujamos.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    implicit(x^2 + y^2 = 1,x,-1,1,y,-1,1),
+    color               = red,
+    parametric(raiz, t, t, -1, 1),
+    parametric(-raiz, t, t, -1, 1),
+    proportional_axes   = 'xy
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comprobamos que el área es la misma.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+2*integrate(sqrt(1-x^2),x,-0.2649320846027768,0.2649320846027768);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(2*integrate(sqrt(1-x^2),x,-1,-0.2649320846027768));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+float(2*integrate(sqrt(1-x^2),x,0.2649320846027768,1));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Como vemos contiene errores debido a que find_root trabaja de forma numérica, pero aún así el error es del orden de 10^16.
+   [wxMaxima: comment end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

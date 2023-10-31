@@ -1,0 +1,3000 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: comment start ]
+Ejemplos de Mario Rodríguez Riotorto, autor del paquete "draw"
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: section start ]
+Objetos
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: subsect start ]
+bars
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(bars);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    bars([1,5,0.2],[2,7,0.2],[3,-4,0.1],[4,-2,1],[5,3,1]),   
+    xaxis = true,   
+    xtics = {["Ford",1],["Opel",2],["Citroen",3],["Toyota",4],["Teletransportation",5]} 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    key = "Group A", 
+    fill_color = blue,   
+    fill_density = 0.2,   
+    bars([0.8,5,0.4],[1.8,7,0.4],[2.8,-4,0.4]),   
+    key = "Group B",   
+    fill_color = red,   
+    fill_density = 0.6,   
+    bars([1.2,4,0.4],[2.2,-2,0.4],[3.2,5,0.4]),   
+    xaxis = true) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+cylindrical
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(cylindrical);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    axis_3d  = false,   
+    proportional_axes = xyz,    
+    color = blue,   
+    cylindrical(z,z,-2,2,a,0,2*%pi), /* cono */    
+
+    color = brown,   
+    cylindrical(3,z,-2,2,az,0,%pi),  /* cilindro */    
+
+    color = green,   
+    cylindrical(sqrt(25-z^2),z,-5,5,a,0,%pi) /* esfera */ )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+elevation_grid
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(elevation_grid)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+fpprintprec:4$
+m: genmatrix(lambda([i,j], random(10.0)), 6, 6)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color = blue,   
+    elevation_grid(m,0,0,3,2),   
+    xlabel = "x",   
+    ylabel = "y",   
+    surface_hide = true) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Color scalars for elevation_grid objects can be especified with respect 
+to the (x,y) coordinates
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m: apply(       
+    matrix,       
+    makelist(makelist(cos(i^2/80-k/30),k,1,30),i,1,20)) $  
+wxdraw3d(    
+    enhanced3d = [cos(x*y*10),x,y],    
+    elevation_grid(m,-1,-1,2,2),    
+    xlabel     = "x",    
+ylabel     = "y")$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Color scalars defined with respect to coordinates (x,y,z) :
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m: apply(       
+    matrix,       
+    makelist(makelist(cos(i^2/80-k/30),k,1,30),i,1,20)) $  
+wxdraw3d(    
+    xlabel     = "x",    
+    ylabel     = "y",    
+    enhanced3d = [-z,x,y,z],    
+    elevation_grid(m,-1,-1,2,2))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Scaling and reflecting an elevation_grid object:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m: apply(       
+    matrix,       
+    makelist(makelist(i+k^2,k,1,30),i,1,20)) $  
+wxdraw3d(    
+    surface_hide = true,    
+    elevation_grid(m,0,0,3,2),    
+    color        = red,    
+    transform    = [2*u,v/2,-w,u,v,w],    
+    elevation_grid(m,0,0,3,2))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+ellipse
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(ellipse)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una elipse con borde
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    proportional_axes = xy,   
+    fill_color        = sea_green,   
+    color             = aquamarine,   
+    line_width        = 6,   
+    ellipse(7,6,2,3,0,360))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Un cuarto de círculo, empezando en 45 grados
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    proportional_axes = xy,
+    ellipse(0,0,2,2,45,90))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Arcos de elipse
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    line_width        = 2,   
+    color             = black,   
+    background_color  = cyan,   
+    proportional_axes = xy,        
+    ellipse(0,0,2,2,45,90),    
+    transparent       = true,   
+    ellipse(3,0,2,2,45,90))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Sin borde
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    border            = false,   
+    fill_color        = green,   
+    proportional_axes = xy,   
+    ellipse(3,0,2,2,0,360))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Borde intermitente
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    color             = blue,   
+    line_width        = 3,   
+    line_type         = dashes,   
+    fill_color        = green,   
+    proportional_axes = xy,   
+    ellipse(3,0,2,2,0,360)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Diagrama de quesos
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+random_color():=block(
+    [obase : 16, col : "#"],     
+    for i : 1 thru 6 do 
+    col : concat(col,block([sz : concat(random(16))],substring(sz, slength(sz)))),
+    col
+)$  
+
+sectorchart(tit, [pairs]):=    block(
+    [n:length(pairs), items, freqs, degrees, sectors, ini, end:0,conver:float(%pi/180), alpha, hexcolor, numer:true],
+    items: map('first, pairs),       
+    freqs: map('second, pairs),       
+    degrees: 360.0 * freqs / apply("+", freqs),       
+    header:[
+        'title   = tit,
+        'xrange  = [-1.5,1.5],
+        'yrange  = [-1.5,1.5],               
+        'xtics   = false,
+        'ytics   = false
+    ],
+    sectors:makelist((ini: end,end: ini + degrees[i],alpha: ini+degrees[i]/2.0,hexcolor: random_color(),                          
+            [
+                fill_color = hexcolor,                            
+                ellipse(0,0,1.5,1.5,ini,degrees[i]),                            
+                label([items[i], 1.5*cos(alpha*conver), 1.5*sin(alpha*conver)]),                            
+                color = black,                            
+                proportional_axes = xy ]
+        )                          
+            ,i,1,n),       
+    apply(draw2d,append(header,flatten(sectors)))  )$  
+
+sectorchart(
+    "Population growth rate 1997",     
+    ["Belgium",2.3],     
+    ["Denmark",3.7],     
+    ["Germany",0.6],     
+    ["Spain",1.3],     
+    ["France",4.0],     
+    ["Ireland",11.4],     
+    ["Italy",1.8],     
+    ["Luxembourg",12.8],     
+    ["Nederlands",5.6],    
+    ["Austria",0.9],     
+    ["Poland",2.3],     
+    ["Finland",2.9],     
+    ["Sweden",0.4],     
+    ["United Kingdom",3.1] 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Crazy transformation:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+elipse : ellipse(0,6,3,2,270,-150)$ 
+th : %pi/2$  
+wxdraw2d(        
+    dimensions  = 100*[10,4],    
+    proportional_axes = xy,    
+    fill_color  = red,    
+    transform  = [3*cos(th)*x + 4*y + 5, x^2 + 5*cos(th)*y + 5, x, y],   
+     elipse,     
+    /* the yellow ellipse is the original one, option transform is now set to none */    
+    fill_color  = yellow,    
+    transform  = none,    
+    elipse )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+errors
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(errors)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+set_draw_defaults (    
+    dimensions = [400, 250],    
+    xrange = [0,20],    
+    yrange = [-5,10],    
+    grid = true ) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Barras de error verticales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    error_type = y,   
+    errors([[1,2,1], [3,5,3], [10,3,1], [17,6,2]])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Barras horizontales de error con puntos unidos por segmentos
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    points_joined = true,   
+    error_type    = x,   
+    errors([[1,2,1], [3,5,3], [10,3,1], [17,6,2]])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Barras de error horizontales y verticales
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    error_type    = xy,   
+    points_joined = true,   
+    color         = red,   
+    errors([[1,2,1,2], [3,5,2,1], [10,3,1,1], [17,6,1/2,2]])
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+No centradas
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    error_type    = xy,   
+    points_joined = true,   
+    line_width    = 2,   
+    errors([[1,2,0,1.5,1.5,4],[3,5,2.8,4,4,6],[10,3,7,10.2,0,8],[17,6,15,18,-2,8]])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Two samples
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    error_type    = xy,    /* 1st sample */   
+    points_joined = true,   
+    errors([[1,2,1,2], [3,5,2,1], [10,3,1,1], [17,6,1/2,2]]),    
+    /* 2nd sample */   
+    color         = red,   
+    points_joined = false,   
+    errors([[1,8,1/2,1/2], [3,-2,1,1], [10,0,1,1], [15,0,2,1/2]])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Con cajas en vez de barras ortogonales. points_joined no tiene efecto en las cajas
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    error_type    = boxes,   
+    points_joined = true,   
+    line_width    = 2,   
+    color         = red,   
+    fill_density  = 0.5,   
+    errors([[1,2,0,1.5,1.5,4], [3,5,2.8,4,4,6], [10,3,9.5,10.2,0.5,4], [17,6,15,18,5,7]])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Como la anterior, pero los puntos unidos
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+my_data_and_errors:[
+    [1,2,0,1.5,1.5,4],      
+    [3,5,2.8,4,4,6],      
+    [10,3,9.5,10.2,0.5,4],      
+    [17,6,15,18,5,7]
+] $ 
+
+my_data: makelist([first(s), second(s)], s, my_data_and_errors) $  
+
+wxdraw2d(   
+    /* first, let's plot the segments */   
+    points_joined = true,   
+    points(my_data),    
+    /* second, error boxes */   
+    error_type    = boxes,   
+    line_width    = 2,   
+    color         = red,   
+    fill_density  = 0.5,   
+    errors(my_data_and_errors)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Cajas con puntos
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+my_data_and_errors:[
+    [1,2,0,1.5,1.5,4],      
+    [3,5,2.8,4,4,6],      
+    [10,3,9.5,10.2,0.5,4],
+    [17,6,15,18,5,7]] $ 
+
+my_data: makelist([first(s), second(s)], s, my_data_and_errors) $  
+
+wxdraw2d(   
+    /* first, let's plot the boxes */   
+    error_type   = boxes,   
+    line_width   = 2,   
+    color        = red,   
+    fill_density = 0.5,   
+    errors(my_data_and_errors),    
+    /* second, the segments and the points*/   
+    color         = blue,   
+    point_size    = 2,   
+    point_type    = up_triangle,   
+    points_joined = true,   
+    points(my_data) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+explicit
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(explicit);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Funciones explicitas en R^2
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    explicit(u^2,u,-3,3)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Con diferentes estilos
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    explicit(x^3,x,-1,1),        
+    xaxis       = true,        
+    xaxis_color = blue,        
+    yaxis       = true,        
+    yaxis_width = 2,        
+    yaxis_type  = solid,        
+    yaxis_color = "#f3b507"
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+With the secondary y-axis, it is possible to plot functions with respect 
+to two scales of ordinates. The secondary y-axis is drawn on the right. 
+All 2d objects are sensible to local graphics option yaxis_secondary. 
+Other possible options related to the secondary y-axis are: yrange_secondary, 
+ytics_secondary, ytics_axis_secondary and ytics_rotate_secondary:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(    
+    terminal        = wxt,    
+    transparent     = true,    
+    explicit(sin(x),x,0,10),    
+    rectangle([1,-1/2],[4,1/2]),    
+    yaxis_secondary = true,    
+    ytics_secondary = true,    
+    explicit(100*sin(x+0.3)+2,x,0,10),    
+    rectangle([5,-30],[8,60])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The secondary x-axis is drawn on top of the scene. All 2d objects are 
+sensible to local graphics option xaxis_secondary. Other possible options 
+related to the secondary x-axis are: xrange_secondary, xtics_secondary, 
+xtics_axis_secondary and xtics_rotate_secondary:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(    
+/* activate both secondary axes */    
+    xtics_secondary = auto,    
+    ytics_secondary = auto,     
+    /* red curve is plotted against secondary x-axis and primary y-axis */    
+    xaxis_secondary = true,    
+    color           = red,    
+    key             = "top x, left y",    
+    explicit(sin(x),x,0,20),     
+    /* blue curve is plotted against primary x-axis and secondary y-axis */    
+    xaxis_secondary = false,    
+    yaxis_secondary = true,    
+    color           = blue,    
+    key             = "bottom x, right y",    
+    explicit(100*sin(x+0.3)+2,x,0,10)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Piecewise function. This time, the result is saved in a png file. 
+Options terminal and title, since they are global, can be written in any place:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    color     = green,   
+    explicit(u^2,u,-2,2),    
+    explicit(sin(z),z,2,6),   
+    terminal  = png,    
+    title     = "My 1st title"
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Dos funciones. Fichero salvado con formato eps
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    terminal   = eps_color,   
+    dimensions = 100*[10,10],   
+    key        = "Exponential func",   
+    color      = blue,   
+    line_width = 4,   
+    explicit(exp(x),x,-1,3),   
+    line_width = 2,   
+    color      = "#00ff00",   
+    /* green, in hexadecimal */   
+    key        = "Cubic poly",   
+    explicit(%pi*x^3+sqrt(2)*x^2+10,x,0,3),   xlabel     = "Horizontal axis",   ylabel     = "Vertical axis") $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una función racional y sus asíntotas
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    /* the rational function */   
+    grid   = true,   
+    key    = "y = x^2/(x-2)",   
+    yrange = [-10,20],   
+    color  = red,   
+    explicit(x^2/(x-2),x,-9,15),    
+
+     /* asymptotes */   
+    key       = "",   
+    line_type = dots,   
+    color     = blue,   
+    explicit(x+2,x,-9,15),   
+    nticks    = 70,   
+    parametric(2,t,t,-10,20),    
+
+    /* labels and arrows */   
+    head_length = 0.3,   
+    color       = black,   
+    line_type   = solid,  
+    vector([5.35,2.45],[-1.53,3.25]),   
+    vector([-1,7.5],[3,0]),   
+    label_alignment = left,   
+    label(["y = x+2",6,2.5]),   
+    label_alignment = right,   
+    label(["x = 2",-1.7,7.5])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Escala logarítmica
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    background_color = gray,   
+    logy             = true,   
+    xlabel           = "x",   
+    ylabel           = "log(y)",   
+    color            = red,   
+    explicit(exp(x),x,0.1,20),   
+    axis_top         = false,   
+    axis_right       = false,   
+    grid             = true,   
+    title            = "Logarithmic scale"
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The following examples show how to place tics on axes
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    xlabel = "Default tics",   
+    ylabel = "No tics",   
+    ytics  = 'none,   
+    explicit(x^3,x,-1,1)
+)  $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    xlabel = "Start-increment-end",   
+    ylabel = "Tics intervals 0.25",   
+    xtics  = [-3/4,1/8,3/4],   
+    ytics  = 1/4,   
+    explicit(x^3,x,-1,1) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    xlabel     = "User selected tics on axis",   
+    ylabel     = "Rotated labeled tics",   
+    xtics      = {-1/2,-1/4,3/4}, /* set of numbers */   
+    xtics_axis = true,            /* plot tics on x-axis */   
+    ytics      = {["High",0.75],["Medium",0],["Low",-0.75]},   
+    ytics_rotate = true,   
+    grid       = true,   
+    explicit(x^3,x,-1,1)  
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Relleno con color. Por defecto, filled_func tiene el valor false. Cuando tiene el valor
+true, la región acotada entre la función y el fondo se colorea
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("distrib")$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    title       = "Normal probability",   
+    grid        = true,   
+    axis_top    = false,   
+    axis_right  = false,   
+    filled_func = true,   
+    fill_color  = "light-blue",   
+    key         = "Pr(-1 < X < 0)",   
+    explicit(pdf_normal(x,0,1),x,-1,0),   
+    key         = "Pr(1 < X <2)",   
+    fill_color  = "dark-blue",   
+    explicit(pdf_normal(x,0,1),x,1,2),   
+    filled_func = false,   
+    color       = red,   
+    key         = "Normal density N(0,1)",   
+    explicit(pdf_normal(x,0,1),x,-3,3)  
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+It is also possible to fill the region bounded by two explicit 
+functions. You only need to set graphics option filled_func 
+to the expression of the second function. Take into account that 
+the variable used in this expression must be the same used in the 
+explicit object. In this example, note that when you call explicit the 
+second time, filled_func= sin(x) is still active
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    fill_color  = grey,   
+    filled_func = sin(x),   
+    explicit(-sin(x),x,0,%pi),   
+    fill_color  = cyan,   
+    explicit(-sin(x),x,%pi,2*%pi)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Un ejemplo mas elaborado
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f1: 2*x^2-5*x+3$ 
+f2: -8*x^2-x+30$  
+
+[x1,x2]: map('rhs, solve(f1=f2)) $  
+
+wxdraw2d(
+    title       = "Region bounded by two functions",        
+    fill_color  = grey,        
+    filled_func = f2,        
+    explicit(f1,x,x1,x2),        
+    filled_func = false,        
+    xaxis       = true,        
+    xtics_axis  = true,       
+    yaxis       = true,        
+    line_width  = 2,        
+    key         = string(f1),        
+    color       = red,        
+    explicit(f1,x,-3,3),        
+    key         = string(f2),        
+    color       = blue,        
+    explicit(f2,x,-3,3) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Transladando y rotando una parábola
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+th : %pi/6 $  
+
+wxdraw2d(   
+    xrange            = [-2,5],   
+    yrange            = [-1,6],   
+    proportional_axes = 'xy,    
+    explicit(x^2,x,-1,1),   
+    transform  = [cos(th)*x - sin(th)*y + 3,  sin(th)*x + cos(th)*y + 3, x, y],   
+    color             = red,   
+    explicit(x^2,x,-1,1) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Comparing logarithmic and non logarithmic scales in 3D:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw(
+    dimensions = [400,600],
+    gr3d(     
+        title = "Z: non-logarithmic scale",     
+        color = red,     
+        explicit(exp(u^2+v^2),u,0,5,v,0,5)),   
+     gr3d(title = "Z: logarithmic scale",     
+        logz  = true,     
+        color = red,     
+        explicit(exp(u^2+v^2),u,0,5,v,0,5))
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+An explicit function in GIF format:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    terminal = gif,   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Another explicit function. In this case, axis and xy-grid are drawn. Note 
+that the user_preamble option is used to draw the grid at z=0 level:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    explicit(x^2+y^2,x,-1,1,y,-1,1),   
+    xaxis_width=2, 
+    xaxis_color=orange, 
+    xaxis_type=solid, 
+    xaxis=true,   
+    yaxis_width=2, 
+    yaxis_color=orange, 
+    yaxis_type=solid, 
+    yaxis=true,   
+    zaxis_width=2, 
+    zaxis_color=blue,   
+    zaxis_type=solid, 
+    zaxis=true,   
+    grid          = true,   
+    user_preamble = "set xyplane at 0" 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Esconder, no mostrar, superficies
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Dos funciones
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    key          = "Gauss",   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3),   
+    yv_grid      = 10,   
+    color        = red,   
+    key          = "Plane",   
+    explicit(x+y,x,-5,5,y,-5,5),   
+    surface_hide = true
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+An explicit surface and two parametric curves:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color = red,   
+    explicit(exp(sin(x)+cos(x^2)),x,-3,3,y,-3,3),        
+
+    color = blue,   
+    parametric(cos(5*u)^2,sin(7*u),u-2,u,0,2),        
+
+    color = brown,   
+    line_width = 2,   
+    parametric(t^2,sin(t),2+t,t,0,2) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Igual que antes, pero con etiquetas y sin mostrar las superficies
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color = green,   
+    explicit(exp(sin(x)+cos(x^2)),x,-3,3,y,-3,3),        
+
+    color = blue,   
+    parametric(cos(5*u)^2,sin(7*u),u-2,u,0,2),        
+
+    color = brown,   
+    line_width = 2,   
+    parametric(t^2,sin(t),2+t,t,0,2),   
+
+    surface_hide = true,   
+    title = "Surface & curves",   
+    color = red,   
+    label(["UP",-2,0,3]),   
+    label(["DOWN",2,0,-3]) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una composición con objetos en 3D
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    xlabel       = "x",   
+    ylabel       = "y",   
+    zlabel       = "z",        
+
+    color        = "light-blue",   
+   parametric_surface(u**2-v**2,2*u*v,u, u,-3,3,v,-3,3),        
+
+    color   = coral,   
+    xu_grid = 20,   
+    yv_grid = 10,   
+    explicit(10+exp(0.3*sin(x^2/10)+0.2*cos(x^3/5)),x,-10,10,y,-10,10),        
+
+    color      = black,   
+    line_width = 2,   
+    nticks     = 40,   
+    parametric(15*cos(r),10*sin(r),2*r-10,r,0,4*%pi) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Una superficie reflejada
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+surf: explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3) $  
+
+wxdraw3d(   
+    color     = "#a02c00",   
+    surf,   
+    transform = [x,y,-z,x,y,z],   
+    color     = blue,   
+    surf 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- Superficies con color -- SUPERFICIES CON COLOR --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Global graphics option enhanced3d sets Gnuplot's pm3d mode:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = true,   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The same as before, but without the colorbox:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = true,   
+    colorbox     = false,   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+En tonos de gris
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = true,   
+    palette      = gray,   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+An explicit object is defined in terms of the (x, y) coordinates, and we can 
+define color numbers in terms of x and y:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    palette    = gray,   
+    enhanced3d = [y^(10/7)/(x^2+1),x,y],   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+There are some global graphic options for controlling the range and the tics 
+in the colorbox. This example also demonstrates how to build a multiplot:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+example1:   
+    gr3d (
+        title          = "Controlling color range",         
+        enhanced3d     = true,         
+        color          = green,         
+        cbrange        = [-3,10],         
+        explicit(x^2+y^2, x,-2,2,y,-2,2)
+) $  
+
+example2:   
+    gr3d (
+        title          = "Playing with tics in colorbox",         
+        enhanced3d     = true,         
+        color          = green,         
+        cbtics         = {["High",10],["Medium",05],["Low",0]},         
+        cbrange = [0, 10],         
+        explicit(x^2+y^2, x,-2,2,y,-2,2)) $  
+
+example3:   
+    gr3d (
+        title      = "Logarithmic scale to colors",         
+        enhanced3d = true,         
+        color      = green,         
+        logcb      = true,         
+        logz       = true,         
+        palette    = [-15,24,-9],         
+        explicit(exp(x^2-y^2), x,-2,2,y,-2,2)
+) $  
+
+wxdraw(   dimensions = [300,700],   example1, example2, example3) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Cambiamos la paleta de colores
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+? palette;
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+Enter space-separated numbers, `all' or `none':
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+a;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = true,   
+    palette      = [25,-10,35],   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Otra paleta de colores
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+scene1: gr3d(           
+    surface_hide = true,           
+    enhanced3d   = true,           
+    palette      = gray,           
+    explicit(sin(sqrt(x^2+y^2)),x,-5,5,y,-5,5))$  
+
+/* A density plot, looking the surface from above */ 
+scene2: gr3d(           
+    surface_hide   = true,           
+    enhanced3d     = true,          
+     view           = [0, 360],           
+    explicit(sin(sqrt(x^2+y^2)),x,-5,5,y,-5,5))$  
+
+/* Gnuplot experts would prefere to make use of option 'user_preamble' */ 
+scene3: gr3d(           
+    surface_hide  = true,           
+    enhanced3d    = true,           
+    palette       = gray,           
+    user_preamble = "set pm3d map",           
+    explicit(sin(sqrt(x^2+y^2)),x,-5,5,y,-5,5))$  
+
+/* Plot all together in a Postscript file */ 
+wxdraw(   
+    terminal   = eps_color,   
+    dimensions = 100*[8, 16],   
+scene1,   scene2,   scene3) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+By default, when graphics option enhanced3d is set to true, colors depend 
+on the z-values, but when this option is set to an expression, colors 
+depend on the result of this expression and on the actual value of option 
+palette. This is useful for drawing four dimensional plots, where the fourth 
+dimension is given by the color. Note that the expression passed to 
+enhanced3d depends on variables x and y, as in the explicit object below:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = sin(x*y),   
+    explicit(20*exp(-x^2-y^2)-10, x ,-3, 3, y, -3, 3)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Another example with two surfaces. Option palette is global, and it can be 
+used only once, since multiple palettes are not allowed in the same plot. :
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    palette      = gray,   
+    xu_grid      = 50,   
+    yv_grid      = 50,    
+    enhanced3d   = true,  /* equivalent to  enhanced3d = 5*sin(x*y) */   
+
+    explicit(5*sin(x*y), x, -5, 5, y, -5, 5),    
+    enhanced3d   = 5 * sin(v*u),   
+    explicit(u^2+v^2+10, u, -5, 5, v, -5, 5)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+In this case, enhanced3d is used to draw a shadowed surface. 
+(Thanks to Richard Hennessy for this example.):
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x,y,z):=z-20*exp(-x^2-y^2)-10 $ 
+
+fn1(x,y):=20*exp(-x^2-y^2)-10 $  
+
+grad:[diff(f(x,y,z),x),diff(f(x,y,z),y),diff(f(x,y,z),z)] /            
+    sqrt(diff(f(x,y,z),x)^2+diff(f(x,y,z),y)^2+diff(f(x,y,z),z)) $ 
+
+light:[-1/sqrt(3),-1/sqrt(3),1/sqrt(3)] $
+dotprod(x,y,z):=grad.light $  
+
+wxdraw3d(   
+    palette      = [4,5,6],   
+    xu_grid      = 100,   
+    yv_grid      = 100,   
+    colorbox     = false,   
+    enhanced3d   = dotprod(x,y,fn1(x,y)),   
+    explicit(fn1(x,y), x ,-3, 3, y, -3, 3)) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The same two explicit surfaces as above, but with enhanced colors:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d   = true,   
+    palette      = [15,-8,-5],   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3),   
+    explicit(x+y,x,-5,5,y,-5,5)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+We can define number colors with respect to the three coordinates of the points:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d = [z-x+2*y,x,y,z],   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Playing with random colors:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(distrib)$  
+
+wxdraw3d(   
+    palette    = [2,25,-21],   
+    enhanced3d = ['random_normal(z/5,1),x,y,z],   
+    explicit(20*exp(-x^2-y^2)-10,x,-3,3,y,-3,3)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Projecting the Mandelbrot set on a paraboloid:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(fractals)$  
+
+wxdraw3d(   
+    xu_grid    = 100,   
+    yv_grid    = 100,   
+    colorbox   = false,   
+    palette    = [2,25,-21],   
+    enhanced3d = ['mandelbrot_set(x,y),x,y],   
+    explicit(x^2+y^2,x,-2.5,1,y,-1,1)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+User defined palettes are allowed. Assign option palette a list of colors. 
+Surface points with lowest value, according to enhanced3d, will be assigned 
+the first color in the list, and with heighest value the last color, the rest are 
+interpolated:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    xu_grid    = 100,   
+    yv_grid    = 100,   
+    palette    = ["#ff0000", green, orange, "#450cd2", light_blue],   
+    enhanced3d = [z,x,y,z], /* point with coordinates (x,y,z) has */                           
+    /* level z */   
+    explicit(sin(x^2+y^2),x,-3,3,y,-3,3) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- CURVAS DE NIVEL --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+It is possible to fix the number of isolines setting option contour_levels to 
+a positive integer number. The actual number of levels can be adjusted to 
+give simple labels, as in this example:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide   = true,   
+    color          = green,   
+    explicit(exp(-x^2-y^2),x,-2,2,y,-2,2),   
+    contour        = surface,   
+    contour_levels = 3
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Declare increments to isolines setting contour_levels to a list of 
+the form [init, incr, end]:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide   = true,   
+    color          = green,   
+    explicit(exp(-x^2-y^2),x,-2,2,y,-2,2),   
+    contour        = surface,   
+    contour_levels = [0.1,0.1,1]
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+It is also possible to select a certain number of fixed levels setting 
+contour_levels to a set of numbers:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide   = true,   
+    color          = green,   
+    explicit(exp(-x^2-y^2),x,-2,2,y,-2,2),   
+    contour        = surface,   
+    contour_levels = {0.1,0.7,0.8}
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+n this case, contour lines are added in the xy-plane:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color          = green,   
+    explicit(20*exp(-x^2-y^2)-10,x,0,2,y,-3,3),   
+    yv_grid        = 10,   
+    color          = red,   
+    explicit(x+y,x,0,2,y,-5,5),   
+    contour_levels = 15,   
+    contour        = base,   
+    surface_hide   = true
+)  $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+More contours:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color          = green,   
+    explicit(20*exp(-x^2-y^2)-10,x,0,2,y,-3,3),   
+    contour_levels = 15,   
+    contour        = both,   
+    surface_hide   = true
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Contours projected on the plane:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    title          = "Contours projected on the plane",   
+    explicit(20*exp(-x^2-y^2)-10,x,0,2,y,-3,3),   
+    contour_levels = 15,   
+    contour        = map,   
+    surface_hide   = true
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Absolute value of the gamma function:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+gamma2(x,y):=    
+    block(
+        [re,im,g:gamma(x+%i*y)],      
+        re:realpart(g),      
+        im:imagpart(g),      
+        sqrt(re^2+im^2))$  
+
+wxdraw3d(   
+    zrange=[0,6],   
+    xu_grid        = 50,   
+    yv_grid        = 50,   
+    surface_hide   = true,   
+    contour        = surface,   
+    contour_levels = [0,0.5,6], /* from 0 to 6 in steps of 0.5 */   
+    color          = cyan,   
+    explicit(gamma2(x,y),x,-4,4,y,-2,2)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Absolute value of the polynomic function z3+1 with enhanced color and contours:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z3(x,y):= abs((x+y*%i)^3+1)$  
+
+wxdraw3d(   
+    contour    = both,   
+    enhanced3d = true,   
+    explicit(z3(x,y),x,-10,10,y,-10,10)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+geomap
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load("worldmap")$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(geomap)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+This section shows how to plot cartographic maps with the draw package. 
+The graphic object to be used is geomap, where the argument is a list of 
+integer indices (beginning with 0) of the global Lisp array boundaries_array.  
+Some of the examples below can take a while to be rendered.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Dibujamos Barbados
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(geomap(Barbados))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Barbados;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+All country boundaries are defined in an special array of arrays called 
+boundaries_array, and number 2139 tells us that the coast of Barbados is 
+the 2139th element of boundaries_array:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+boundaries_array[2139]$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Which is a set of ten coordinates pairs defining the polygonal line that 
+represents the coast of Barbados.  Package worldmap contains coast lines 
+and boundaries coordinates in (longitude, latitude) format in region [-180,180]×[-90,90]. 
+When the package is loaded, global variable boundaries_array is set to an array 
+of length 2801, each element being another array containing the coordinates of 
+a boundary:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+arrayinfo(boundaries_array);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The map of Antigua and Barbuda:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(geomap(Antigua_and_Barbuda));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    geomap(Spain),
+    proportional_axes = xy);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Para dibujar España se necesitan varios arrays
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Spain;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Let's now plot boundaries from 1000 to 2000:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(geomap(makelist(k,k,1000,2000))) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+The complete map:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(geomap(makelist(k,k,0,2800))) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Algunos paises y continentes
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+c1: gr2d(geomap([Canada,United_States,Mexico,Cuba]))$ 
+c2: gr2d(geomap([Africa]))$ 
+c3: gr2d(geomap([Oceania,China,Japan]))$ 
+c4: gr2d(geomap([France,Portugal,Spain,Morocco,Western_Sahara]))$ 
+wxdraw(  columns    = 2,   c1,c2,c3,c4) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+There are in worldmap some utilities of interest, especially for defining 
+new geographical objects. Sicily (south Italy) is not defined in worldmap, 
+but we know that it is in the rectangular region defined by vertices 
+10.4E 41.5N and 20.7E 35.4N (just tell Maxima to plot Italy and move 
+the mouse around). Now call function region_boundaries to know which 
+vertices are within this region and plot them:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+z: region_boundaries(10.4,41.5,20.7,35.4)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(geomap(z))$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+With this output, you don't know how to define Sicily as a Maxima variable, 
+but you can call function numbered_boundaries, also defined in worldmap, to 
+see the numbers of the polygonal segments:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+numbered_boundaries(z);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+We know now that Sicily is formed by boundary number 1881. Let's make use of it:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Sicily: [1881]$ 
+/* cities coordinates and populations from wikipedia */ 
+labs: label(
+    ["Agrigento",13.583,37.317 - 0.1],             
+    ["Caltanisseta",14.067,37.4833 - 0.1],             
+    ["Catania",15.066,37.517 - 0.1],             
+    ["Enna",14.276,37.5633 - 0.1],             
+    ["Messina",15.55,38.183 - 0.1],             
+    ["Palermo",13.367,38.117 - 0.1],             
+    ["Ragusa",14.75,36.933 - 0.1],             
+    ["Siracusa",15.283,37.083 - 0.1],             
+    ["Trapani",12.517,38.017 - 0.1] )$ 
+
+pop1: points([[13.583,37.317],    /* Agrigento */               
+    [14.067,37.4833],   /* Caltanisseta */               
+    [14.276,37.5633],   /* Enna */               
+    [14.75,36.933],     /* Ragusa */               
+    [12.517,38.017]])$  /* Trapani */ 
+
+pop2: points([[15.55,38.183],     /* Messina */               
+    [15.283,37.083]])$  /* Siracusa */ 
+
+pop3: points([[15.066,37.517]])$  /* Catania */ 
+
+pop4: points([[13.367,38.117]])$  /* Palermo */ 
+
+wxdraw2d(
+    yrange     = [36.5,39],        
+    xrange     = [12.2,15.7],        
+    title      = "Sicilian cities populations",        
+    line_width = 3,        
+    geomap(Sicily),        
+    point_type = filled_circle,        
+    color = green,        
+    key = "       < 100000", 
+    point_size = 1, pop1,        
+    key = "100000 - 300000", 
+    point_size = 1.5, pop2,        
+    key = "300000 - 500000", 
+    point_size = 2, pop3,        
+    key = "       > 500000", 
+    point_size = 2.5, pop4,        
+    color = blue,        
+    labs )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+With function make_poly_country in package worldmap it is possible to build 
+polygonal objects from country names, so that they can be filled with different 
+colours. The return value of make_poly_country is a list of polygons, since some 
+countries need more than just one polygonal because of the islands. A simple 
+example follows:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    dimensions = [400,600],   
+    color      = white, /* white country borders */    
+    fill_color = red,             
+    make_poly_country(Bolivia),   
+    fill_color = cyan,            
+    make_poly_country(Paraguay),   
+    fill_color = green,           
+    make_poly_country(Colombia),   
+    fill_color = blue,            
+    make_poly_country(Chile),   
+    fill_color = "#23ab0f",       
+    make_poly_country(Brazil),   
+    fill_color = goldenrod,       
+    make_poly_country(Argentina),   
+    fill_color = "midnight-blue", 
+    make_poly_country(Uruguay) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+There is also make_poly_continent to build polygonal objects from 
+continent names or lists of countries:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    grid       = true,   
+    color      = white, /* white country borders */   
+    fill_color = red,    
+    make_poly_continent(North_America),   
+    fill_color = green,  
+    make_poly_continent(Central_America),   
+    fill_color = blue,   
+    make_poly_continent(South_America) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Variable European_Union is defined in worldmap. You can download the flags and 
+the mermaid from here
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(picture)$  
+wxdraw2d(  
+    dimensions = [500,400],
+    /* background */
+    border     = false,   
+    fill_color = cyan,   
+    rectangle([-28.80,27.53],[34.79,70.26]),   
+    /* boundaries */   
+    line_width = 3,   
+    color      = "dark-violet",   
+    geomap(European_Union),   
+    /* flags */   
+    image(read_xpm("flags/austria.xpm"),13.3,46.9,2,1.2),   
+    image(read_xpm("flags/belgium.xpm"),3.66,49.77,2,1.2),   
+    image(read_xpm("flags/bulgaria.xpm"),24,42,2,1.2),   
+    image(read_xpm("flags/cyprus.xpm"),31,33,2,1.2),   
+    image(read_xpm("flags/czech_republic.xpm"),14.18,49.15,2,1.2),   
+    image(read_xpm("flags/denmark.xpm"),6.86,55.46,2,1.2),   
+    image(read_xpm("flags/estonia.xpm"),27.02,58,2,1.2),   
+    image(read_xpm("flags/finland.xpm"),26.03,63.5,2,1.2),   
+    image(read_xpm("flags/france.xpm"),1.3,46.32,2,1.2),   
+    image(read_xpm("flags/germany.xpm"),8,50.5,2,1.2),   
+    image(read_xpm("flags/greece.xpm"),19.86,36.37,2,1.2),   
+    image(read_xpm("flags/hungary.xpm"),17.65,45.79,2,1.2),   
+   image(read_xpm("flags/ireland.xpm"),-9.69,50.24,2,1.2),   
+    image(read_xpm("flags/italy.xpm"),12.39,40.82,2,1.2),   
+    image(read_xpm("flags/latvia.xpm"),27.71,55.22,2,1.2),   
+    image(read_xpm("flags/lithuania.xpm"),24.89,53.59,2,1.2),   
+    image(read_xpm("flags/luxembourg.xpm"),6.14,48.90,2,1.2),   
+    image(read_xpm("flags/malta.xpm"),13.43,33.69,2,1.2),   
+    image(read_xpm("flags/netherlands.xpm"),4.01,52.88,2,1.2),   
+    image(read_xpm("flags/poland.xpm"),17.86,51.73,2,1.2),   
+    image(read_xpm("flags/portugal.xpm"),-11.56,39.48,2,1.2),   
+    image(read_xpm("flags/romania.xpm"),23.85,45.18,2,1.2),   
+    image(read_xpm("flags/slovakia.xpm"),19.37,48.72,2,1.2),   
+    image(read_xpm("flags/slovenia.xpm"),14.16,44.65,2,1.2),   
+    image(read_xpm("flags/spain.xpm"),-4.79,39.82,2,1.2),   
+    image(read_xpm("flags/sweden.xpm"),14.05,62.63,2,1.2),   
+    image(read_xpm("flags/united_kingdom.xpm"),-2.61,52.11,2,1.2),   
+    /* the mermaid */   
+    image(read_xpm("flags/sirena.xpm"),-26,44,9,9)  
+   )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- APLICACIONES EN R^3 --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+In 3D, maps are projected on the unit sphere (center (0,0,0) and radius 1):
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    line_width        = 2,   
+    proportional_axes = xyz,   
+    color = blue,              
+    geomap(United_States),   
+    color = red,               
+    geomap(Spain),   
+    color = "light-goldenrod", 
+    geomap(Germany),   
+    color = coral,             
+    geomap(Russia),   
+    color = "#58a30f",         
+    geomap(Portugal),   
+    color = magenta,           
+    geomap(Brazil),   
+    color = orange,            
+    geomap(Japan),   
+    color = purple,            
+    geomap(Australia) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+World coastlines and islands projected on the sphere. Variable World_coastlines 
+is defined in package worldmap:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+c:%pi/180$  
+
+wxdraw3d(   
+    surface_hide = true,   
+    color        = yellow,   
+    parametric_surface(   
+        cos(phi*c)*cos(theta*c),        
+    cos(phi*c)*sin(theta*c),        
+        sin(phi*c),        
+        theta,-180,180,        phi,-90,90),   
+    color      = blue,   
+    line_width = 2,   
+    geomap(World_coastlines)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Australia projected on two different spheres:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color      = red,   
+    geomap(Australia), /* projected on unit sphere */   
+    color      = blue,   
+    line_width = 3,   
+    geomap([Australia],          
+    [spherical_projection,2,2,2,3])
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Cylindrical and spherical projections:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    color = red,   
+    geomap([America_coastlines,Eurasia_coastlines],          
+    [spherical_projection,2,2,2,3]),   
+    color = blue,   
+    geomap([America_coastlines,Eurasia_coastlines],          
+    [cylindrical_projection,2,2,2,3,4])
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Another example of cylindrical and spherical projections. The sphere is also plotted:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    view         = [60, 131],   
+    color        = yellow,   
+    parametric_surface(        
+        cos(phi)*cos(theta),        
+        cos(phi)*sin(theta),        
+        sin(phi),        
+        theta,-%pi,%pi,        
+        phi,-%pi/2,%pi/2),   
+    color = red,   
+    geomap([South_America,Africa,Australia],          
+    [spherical_projection,0,0,0,1]),   
+    color = blue,   
+    geomap([South_America,Africa,Australia],          
+    [cylindrical_projection,0,0,0,1,2])
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Conic projection:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:90$ 
+r:1$ 
+[cx,cy,cz]:[0,0,0]$ 
+c: float(%pi/180)$ h:r/sin((a/2) * c)$ R:r/cos((a/2) * c)$ 
+m: sqrt(h^2+R^2)$  
+wxdraw3d(   
+    proportional_axes = xyz,   
+    color = yellow,   
+    parametric_surface(         
+        cx+R*cos(theta)*t,         
+        cy+R*sin(theta)*t,         
+        cz+(1-t)*h,theta,-%pi,%pi,t,0,1),   
+    parametric_surface(         
+        cx+R*cos(theta)*t,         
+        cy+R*sin(theta)*t,         
+        cz-(1-t)*h,theta,-%pi,%pi,t,0,1),   
+    color = black,   
+    geomap([America_coastlines,Africa_coastlines],          
+    [conic_projection,cx,cy,cz,r,a])
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- Fronteras --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Array boundaries_array does not contain all countries and islands in the 
+world. If we want to add more boundaries, we can proceed as follows.  The 
+Cíes Islands are in Galicia, in the northwest of Spain. They are not included 
+in boundaries_array and we want to plot them. First, we see how many arrays are 
+already in boundaries_array:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+arrayinfo(boundaries_array);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+This means that the last element has index 2800, let's see it
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+boundaries_array[2800];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Now, we want to add two islands:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+b1: make_array(flonum,24)$  
+( b1[0]: -8.91463, b1[1]: 42.25134,   
+b1[2]: -8.90167, b1[3]: 
+42.24200,   b1[4]: -8.90073, 
+b1[5]: 42.23100,   b1[6]: -8.89558, 
+b1[7]: 42.22732,   b1[8]: -8.90159, 
+b1[9]: 42.22522,   b1[10]: -8.89935, 
+b1[11]: 42.21708,   b1[12]: -8.91429, 
+b1[13]: 42.21162,   b1[14]: -8.91652, 
+b1[15]: 42.21727,   b1[16]: -8.90622, 
+b1[17]: 42.22458,   b1[18]: -8.90794, 
+b1[19]: 42.23863,   b1[20]: -8.91815, 
+b1[21]: 42.25070,   b1[22]: -8.91463, 
+b1[23]: 42.25134 )$
+
+b2: make_array(flonum,10)$  
+( b2[0]: -8.91283, b2[1]: 42.20586,  
+ b2[2]: -8.90759, b2[3]: 42.20688,   
+b2[4]: -8.88940, b2[5]: 42.19149,   
+b2[6]: -8.90802, b2[7]: 42.19187,   
+b2[8]: -8.91283, b2[9]: 42.20586 )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Now, we redimension boundaries_array and add the two new arrays to it:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+boundaries_array: rearray(boundaries_array, 2802)$ 
+boundaries_array[2801]: b1$ 
+boundaries_array[2802]: b2$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+We redefine variable Spain appending the Cíes Islands:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Spain: append(Spain, [[2801],[2802]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Plot
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw(   
+    columns     = 1,   
+    dimensions  = [400, 600],   
+    gr2d(     
+        geomap([Spain]),     
+        color  = black,     
+        label(["Illas Cies", -9.15, 42.2])),   
+    gr2d(     
+        geomap([Spain]),     
+        xrange = [-9.85, -7.76],     
+        yrange = [41.59,43.75],     
+        color  = black,     
+        label(["Illas Cies", -9.15, 42.2])) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+image
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+implicit
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(implicit)$
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+Enter space-separated numbers, `all' or `none':
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+a;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- Funciones implicitas en dos variables --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(  
+    grid       = true,   
+    line_type  = solid,   
+    key        = "y^2=x^3-2*x+1",   
+    implicit(y^2=x^3-2*x+1, x, -4,4, y, -4,4),   
+    line_type  = dots,   color      = red,   
+    key        = "x^3+y^3 = 3*x*y^2-x-1",   
+    implicit(x^3+y^3 = 3*x*y^2-x-1, x, -4,4, y, -4,4),   
+    title      = "Two implicit functions" 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+ -- Funciones implicitas en tres variables --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gnuplot is not the best tool for 3d modelling tasks, but with some tricks we 
+can get implicit surfaces. The method used by Maxima is the marching 
+cubes triangularization algorithm.  
+
+Union of two 3d objects:  
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    implicit(
+        min((x-1)^2+(y-1)^2+(z-1)^2, x^6+y^6+z^6)=1,            
+        x,-1.1,2.1,y,-1.1,2.1,z,-1.5,2.1),   
+    surface_hide = true
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Intersection of the same objects:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    implicit(max((x-1)^2+(y-1)^2+(z-1)^2, x^6+y^6+z^6)=1,            
+        x,-0.1,1.1,y,0,1.3,z,-0.1,1.1),   
+surface_hide = true)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Icosahedral symmetry. %phi is the golden ratio:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    proportional_axes = xyz,   
+    enhanced3d        = true,   
+    x_voxel           = 15,   
+    y_voxel           = 15,   
+    z_voxel           = 15,   
+    implicit(2=(cos(x+%phi*y)+cos(x-%phi*y)+cos(y+%phi*z)+ 
+        cos(y-%phi*z)+cos(z-%phi*x)+cos(z+%phi*x)),            
+        x,-4,4,y,-4,4,z,-4,4),   
+    palette           = gray,   
+    surface_hide      = true)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Some more examples, suggested by Wolfgang Lindner. We see here how 
+different look the same surfaces plotted by different draw graphics objects: implicit 
+vs spherical and cylindrical; the resulting triangles are evident in the first case:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+scn1: gr3d(   
+    color        = red,   
+    implicit(x^2+y^2+z^2=1,x,-1.5,1.5,y,-1.5,1.5,z,-1.5,1.5),   
+    color        = green,   
+    implicit(2*x^2+2*y^2=1,x,-1.5,1.5,y,-1.5,1.5,z,-1.5,1.5),   
+    surface_hide = true)$  
+
+scn2: gr3d(   
+    color        = red,   
+    spherical(1,a,0,2*%pi,z,0,%pi),   
+    color        = green,   
+    cylindrical(1/sqrt(2),z,-1.5,1.5,az,0,2*%pi),   
+    surface_hide = true)$  
+
+/* adding intersection curves */ 
+scn3: gr3d(   
+    color       = red,   
+    spherical(1,a,0,2*%pi,z,0,%pi),   
+    color       = green,   
+    cylindrical(1/sqrt(2),z,-1.5,1.5,az,0,2*%pi),   
+    color       = blue,   
+    line_width  = 3,   
+    parametric(cos(t)/sqrt(2), 
+        sin(t)/sqrt(2), 
+        sqrt(1-(cos(t)/sqrt(2))^2-(sin(t)/sqrt(2))^2),   
+        t,0,2*%pi),   
+    parametric(cos(t)/sqrt(2),              
+        sin(t)/sqrt(2),              
+        -sqrt(1-(cos(t)/sqrt(2))^2-(sin(t)/sqrt(2))^2),              
+        t,0,2*%pi),   
+    surface_hide = true)$  
+
+wxdraw(     
+    columns    = 1,   dimensions = [300,900],     scn1,scn2,scn3) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Now the union and intersection of the sphere and the cylinder:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw(   
+    columns    = 1,   
+    terminal   = eps,   
+    dimensions = 100*[8,16],        
+
+    /* union */   
+    gr3d(enhanced3d   = true,        
+    implicit(min(x^2+y^2+z^2,2*x^2+2*y^2)=1,                 
+        x,-1.5,1.5,y,-1.5,1.5,z,-1.5,1.5),        
+    surface_hide = true,        
+    palette      = gray),    
+
+    /* intersection */   
+    gr3d(enhanced3d   = true,        
+    implicit(max(x^2+y^2+z^2,2*x^2+2*y^2)=1,                 
+        x,-1.5,1.5,y,-1.5,1.5,z,-1.5,1.5),        
+    surface_hide = true,        
+    palette      = gray) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Color numbers for implicit surfaces can be only defined with 
+respect to the (x,y,z) ( x , y , z )  coordinates:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d = [x-y,x,y,z],   
+    implicit((x^2+y^2+z^2-1)*(x^2+(y-1.5)^2+z^2-0.5)=0.015,            
+        x,-1,1, y,-1.2,2.3, z,-1,1)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+label
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(label)$
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+Enter space-separated numbers, `all' or `none':
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+a;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    yrange = [0.1,1.4],    
+
+    color  = red,   
+    label(["Label in red",0,0.3]),    
+
+    color  = "#0000ff",   
+    label(["Label in blue",0,0.6]),    
+
+    color  = light_blue,   
+    label(["Label in light-blue",0,0.9],["Another light-blue",0,1.2]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Label in 3d plots
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    surface_hide = true,   
+    explicit(exp(sin(x)+cos(x^2))-2,x,-3,3,y,-3,3),    
+    color = red,   
+    label(["UP 1",-2,0,3], ["UP 2",1.5,0,4]),    
+    color = blue,   
+    label(["DOWN 1",2,0,-3]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Playing with font type and size in x11 terminal:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    explicit(x^2,x,-1,1),   
+    grid      = true,    
+    font      = "Arial",   
+    font_size = 20,        
+    color     = red,   
+    label(["Parabola",0,0.3]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+It's possible to write greek letters and some basic mathematical 
+symbols in labels and titles. The syntax to be used is described here:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    dimensions      = 100*[12, 8], /* 12 cm x 8 cm */   
+    filled_func     = 0,   
+    fill_color      = cyan,   
+    explicit(x^2-x+5, x, 1, 4),   
+    filled_func     = false,   
+    explicit(x^2-x+5, x, -1, 5),   
+    color           = black,   
+    label_alignment = left,   
+    label(["f(x) = ({/Symbol a} x^2 + {/Symbol b} x +{/Symbol g})", 1.1, 22],         ["A = {/Symbol=30 \\362@_{/=9.6 1}^{/=12 4}} f(x) d x",1.1,19]),   
+    yrange          = [-1,30],   
+    grid            = true,   
+    terminal        = eps_color ) ;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gif animation with greek characters:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+set_draw_defaults(   
+    xrange          = [1,2.5],   
+    yrange          = [1,3],   
+    label_alignment = left )$  
+
+greek_word:   
+    ["{/Symbol P} ",
+    "{/Symbol u} ",
+    "{/Symbol t} ",
+    "{/Symbol a} ",
+    "{/Symbol g} ",
+    "{/Symbol o} ",
+    "{/Symbol r} ",
+    "{/Symbol a} ",
+    "{/Symbol s} "] $  
+dynamic_word:   
+    makelist(     
+        block([word:""],       
+            for i:1 thru k do word: concat(word, greek_word[i]),       
+            gr2d(label([word,1.3,2]))),     
+        k, 1, length(greek_word)) $  
+
+wxdraw(   
+    delay      = 100,   
+    file_name  = "greek",   
+    dimensions = [400, 200],   
+    terminal   = 'animated_gif,   
+    dynamic_word  
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Mathematical expresions in a png file
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    terminal  = png,   
+    color     = black,   
+    explicit(exp(-tau^2/2),tau,0,1),   
+    ylabel    = "f({/Symbol t})",   
+    xlabel    = "Time,  {/Symbol t}",   label(["f({/Symbol t}) = e^{-{/Symbol t}^2/2}",0.3,0.7]) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+mesh
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+parametric
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(parametric)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Parametric and explicit functions
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    color = ReD,   /* case insensitive */   
+    explicit(exp(x),x,-1,3),    
+
+    color = "#0000Ff",   
+    key   = "This is the parametric one!!",   
+    parametric(2*cos(rrr),rrr^2,rrr,0,2*%pi)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Transforming a parametric function
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+para : parametric(2*cos(r),r,r,0,2*%pi) $  
+
+wxdraw2d(    
+    para,    
+    transform = [v+6,u,u,v],    
+    color     = red,    
+    para)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+-- Curvas paramétricas en R^3 --
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: comment start ]
+Parametric 3D curves can be rendered with a colored 4th dimension. 
+This feature is a contribution by Joan Pau Beltran
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(    
+    color      = blue,   
+    nticks     = 60,    
+    line_width = 3,    
+    enhanced3d = (u-1)^2,    
+    parametric(cos(5*u)^2,sin(7*u),u-2,u,0,2)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+A parametric curve is defined in terms of one parameter; we can define color 
+numbers with respect to it. Also, we can define color numbers in terms 
+of coordinates (x, y, z):
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+set_draw_defaults(       
+    nticks     = 60,       
+    line_width = 3,       
+    view       = [63,74])$  
+
+par_fun: parametric(sin(u)^2,cos(u),u,u,0,4*%pi)$  
+
+c1: gr3d(       
+    /* we can select any parameter name */       
+    enhanced3d = [(k-1)^2,k],       
+    par_fun) $  
+
+c2: gr3d(       
+    /* coordinate names are also arbitrary */       
+    enhanced3d = [if yy>= 0 then 1 else 0, xx, yy, zz],       
+    par_fun) $  
+
+wxdraw(dimensions = [350,700],      
+    c1,      c2,      columns    = 1)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+parametric_surface
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(parametric_surface)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+La banda de Möbius
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    xu_grid      = 50,   
+    yv_grid      = 15,   
+    surface_hide = true,   
+    dimensions   = 100*[8,7],    
+    parametric_surface(cos(a)*(3+b*cos(a/2)),                      
+        sin(a)*(3+b*cos(a/2)),                      
+        b*sin(a/2), a,-%pi,%pi,b,-1,1) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Sea shell
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    title          = "Sea shell",   
+    dimensions     = [300,600],   
+    xu_grid        = 100,     
+    yv_grid        = 25,   
+    view           = [100,20],   
+    surface_hide   = true,   
+    parametric_surface(0.5*u*cos(u)*(cos(v)+1),                      
+        0.5*u*sin(u)*(cos(v)+1),                      
+        u*sin(v) - ((u+3)/8*%pi)^2 - 20,                      
+ u, 0, 13*%pi, v, -%pi, %pi) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Torus and sphere
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(    
+    surface_hide = true,    
+    dimensions   = [400,400],    
+    title        = "Two parametric surfaces",    
+    color        = dark_khaki,    
+    parametric_surface((1-0.2*cos(v))*cos(u),                       
+        (1-0.2*cos(v))*sin(u),                        
+        0.2*sin(v), u,0,2*%pi,v,0,2*%pi),    
+    color        = midnight_blue,    
+    parametric_surface(
+        cos(u)*cos(v),                       
+        cos(u)*sin(v),                       
+        1+sin(u), u,-2*%pi,2*%pi,v,0,2*%pi) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+An enhanced torus
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    palette    = [7,-15,3],   
+    enhanced3d = (1-0.2*cos(v))*sin(u),   
+    parametric_surface(           
+        (1-0.2*cos(v))*cos(u),           
+        (1-0.2*cos(v))*sin(u),          
+        0.2*sin(v),           
+        u, 0, 2*%pi, v, 0, 2*%pi)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Interlocking enhanced tori
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    enhanced3d = sin(u)+cos(v),    
+    palette    = [8,4,3],   
+    dimensions = 100*[10,10],   
+    parametric_surface(cos(u)+.5*cos(u)*cos(v),                     
+         sin(u)+.5*sin(u)*cos(v),                      
+        .5*sin(v),                     
+         u, -%pi, %pi,                     
+         v, -%pi, %pi),   
+    parametric_surface(1+cos(u)+.5*cos(u)*cos(v),                      
+        .5*sin(v),                   
+    sin(u)+.5*sin(u)*cos(v),                      
+    u, -%pi, %pi,                      
+    v, -%pi, %pi)
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Archimedes would like this one. A cylinder circumscribed on a sphere:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    dimensions     = 100*[10,10],   
+    surface_hide   = true,   
+    xtics          = none,   
+    ytics          = none,   
+    ztics          = none,   
+    axis_3d        = false,  
+    view           = [48,22],   
+    parametric_surface(cos(a)*cos(b),                      
+        cos(b)*sin(a),                      
+        sin(b), a,0,2*%pi,b,-%pi/2,%pi/2),   
+    color          = cyan,   
+    parametric_surface(1.01*cos(a),1.01*sin(a),z,a,0,3/2*%pi,z,-1,1),   
+    xu_grid        = 25,   
+    yv_grid        = 5,   
+    parametric_surface(1.01*r*cos(a),1.01*r*sin(a),1,a,0,3/2*%pi,r,0,1),   
+    parametric_surface(1.01*r*cos(a),1.01*r*sin(a),-1,a,0,3/2*%pi,r,0,1)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+A parametric_surface object is defined in terms of two parameters (u,v) ( u , v ) ; 
+we can define color numbers with respect to them:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(fractals) $  
+
+wxdraw3d(   
+    xu_grid           = 200,   
+    yv_grid           = 200,   
+    palette           = gray,   
+    view              = [125,280],   
+    proportional_axes = xyz,   
+    enhanced3d        = ['mandelbrot_set(u-%pi,v-%pi/2),u,v],   
+    parametric_surface(     
+        cos(u)*sin(v),     
+        sin(u)*sin(v),     
+        cos(v), u, 0, 2*%pi, v, 0, %pi)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+We can define color numbers in terms of coordinates (x,y,z) ( x , y , z ) . Suppose 
+a toroidal surface in a 3D scalar field ϕ=sin(10x2+13y2+7z2) ϕ = sin ⁡ ( 10 x 2 + 13 y 2 + 7 z 2 ) ; here is a colored representation of the field values on the surface:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    xu_grid           = 200,   
+    yv_grid           = 200,   
+    enhanced3d        = [sin(10*x^2+13*y^2+7*z^2),x,y,z],   
+    proportional_axes = xyz,   
+    parametric_surface(     (1-0.2*cos(v))*cos(u)-1/2,     (
+        1-0.2*cos(v))*sin(u)-1/2,     
+        0.2*sin(v), u, 0, 2*%pi, v, 0, 2*%pi)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Two Möbius bands
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(   
+    xu_grid   = 50,   
+    yv_grid   = 15,   
+parametric_surface(cos(a)*(3+b*cos(a/2)),                      
+        sin(a)*(3+b*cos(a/2)),                      
+        b*sin(a/2), a,-%pi,%pi,b,-1,1),  
+ transform = [2*x,2*y,z,x,y,z],   
+ color     = cyan,   
+ parametric_surface(cos(a)*(3+b*cos(a/2)),                      
+        sin(a)*(3+b*cos(a/2)),                      
+        b*sin(a/2), a,-%pi,%pi,b,-1,1) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+points
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: comment start ]
+Discrete samples. Points can be entered in two ways: [[x1,y1],[x2,y2],...] 
+or [[x1,x2,...],[y1,y2,...]]:  
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    key           = "puntitos",   
+    points(makelist([random(20),random(50)],k,1,10)),   
+    point_type    = 6,   
+    point_size    = 2,   
+    points_joined = true,   
+    color         = blue,   
+    key           = "puntazos",   
+    points(makelist(k,k,1,20),makelist(random(30),k,1,20))
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+La curva de Peano
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(fractals)$  
+wxdraw2d(   
+    point_size    = 0,   
+    points_joined = true,   
+    color         = red,   
+    title         = "Peano",   
+    points(sierpinskimap(5)) 
+) $
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+bs:[[64,-104], [64,-99], [61,-95], [57,-95], [55,-94], [55,-90],     
+    [72,-89], [80,-88], [77,-86], [80,-88], [82,-91], [80,-88],     
+    [72,-89], [55,-90], [47,-89], [39,-87], [33,-84], [32,-81],      
+    [35,-75], [36,-69], [42,-69], [45,-68], [42,-69], [36,-69],     
+    [35,-67], [35,-62], [35,-60], [39,-60], [45,-61], [51,-61],     
+    [53,-65], [56,-68], [61,-70], [67,-71], [73,-70], [78,-67],     
+    [80,-64], [81,-61], [78,-58], [75,-60], [75,-62], [78,-62],     
+    [81,-61], [81,-56], [79,-50], [75,-47], [70,-44], [62,-44],     
+    [58,-45], [53,-50], [52,-52], [49,-53], [48,-52], [48,-50],     
+    [49,-48], [51,-49], [52,-52], [51,-54], [51,-57], [51,-61],      
+    [45,-61], [39,-60], [35,-60], [32,-57], [32,-52], [32,-49],     
+    [35,-45], [39,-42], [43,-41], [48,-42], [51,-43], [55,-47],     
+    [51,-43], [48,-42], [43,-41], [44,-38], [47,-35], [54,-16],     
+    [56,-5], [60,-11], [64,-6], [67,-12], [72,-7], [74,-14],     
+    [80,-9], [80,-16], [86,-11], [87,-17], [92,-12], [93,-21],     
+    [99,-16], [100,-22], [106,-19], [107,-27], [115,-25], [110,-32],     
+    [94,-72], [91,-72], [88,-73], [87,-74], [88,-76], [91,-76],     
+    [91,-79], [89,-81], [91,-79], [91,-76], [94,-77], [94,-79],     
+    [94,-77], [91,-76], [88,-76], [87,-74], [88,-73], [91,-72],     
+    [94,-72], [97,-75], [98,-80], [97,-82], [94,-84], [91,-85],      
+    [87,-83], [84,-80], [87,-83], [91,-85], [91,-95], [92,-102],     
+    [85,-105], [69,-106], [64,-104]]$  
+wxdraw2d(   
+    point_type    = dot,   
+    points_joined = true,   
+    points(bs) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+polar
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(polar)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d( 
+    grid       = true,   
+    nticks     = 300,   
+    line_type  = solid,   
+    key        = "Rhodonea curve",   
+    polar(5*sin(10*theta),theta,0,%pi*2),   
+    line_type  = dots,   
+    key        = "Fermat spiral",  /* don't write "Fermat's" !! */   
+    polar(sqrt(theta),theta,0,10*%pi),   
+    key        = "",       /* we avoid two equal entries in legend */   
+    polar(-sqrt(theta),theta,0,10*%pi) )$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Option grid = true makes reference to a rectangular grid on the plane. If we are plotting a 
+function in polar coordinates, maybe we prefere a polar grid. In this case, option user_preamble will 
+be of great help:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    background_color = "#ffff99",   
+    user_preamble    = "set grid;set grid polar",   
+    nticks           = 200,   
+    xrange           = [-5,5],   
+    yrange           = [-5,5],   
+    color            = red,   
+    line_width       = 3,   
+    title            = "Hyperbolic Spiral",   
+    polar(10/theta,theta,1,10*%pi) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Mariposa
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+    nticks   = 600,    
+    polar(exp(cos(t))-2*cos(4*t)+sin(t/12)^5,          
+    t, 0, 30)  
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+polygon
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(polygon)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+A convex polygon. Vertices are defined with a list of pairs of numbers:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    fill_color        = navy,   
+    color             = yellow,   
+    line_width        = 6,   
+    proportional_axes = xy,   
+    polygon([[1,1],[3,0],[4,5],[0,3]]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Polígono cóncavo
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    fill_color = navy,   
+    color      = yellow,   
+    line_width = 6,   
+    proportional_axes = xy,   
+    polygon([[3,3],[3,0],[4,5],[0,3]]) 
+)$ 
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Dotted and transparent star. Vertices are defined with two lists, for abscissas and ordinates:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    proportional_axes = xy,   
+    background_color  = brown,   
+    transparent       = true,   
+    line_width        = 3,   
+    line_type         = dots,   
+    color             = salmon,   
+    polygon([0,1,5,1,0,-1,-5,-1],           
+    [5,1,0,-1,-5,-1,0,1]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ten random translations:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+poly: polygon([[0,0],[1,1],[3,2],[3,-1]])$  
+wxdraw2d(   
+    makelist(     
+        [transform = [x+random(10),y+random(10),x,y],      
+            poly],     
+        k, 10) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Gaussian polygon of ten vertices:A
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(distrib)$  
+wxdraw2d(   
+    polygon(random_normal(0,1,10),           
+    random_normal(0,1,10)) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+rectangle
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+describe(rectangle)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    fill_color        = gray30,   
+    color             = yellow,   
+    line_width        = 6,   
+    proportional_axes = xy,   
+    xrange            = [0,6],   
+    yrange            = [0,7],   
+    rectangle([1,1],[3,3]) 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    line_width        = 2,   
+    rectangle([1,1],[3,5]),   
+    transparent       = true,   
+    rectangle([2,2],[4,7])
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ellipses, polygons and rectangles:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   
+    fill_color = sea_green,   
+    color      = aquamarine,   
+    line_width = 6,   
+    polygon([[1,1],[3,0],[4,5],[0,3]]),    
+    transparent = true,   
+    line_type   = dots,   
+    color       = "dark-yellow",   
+    polygon([4,5,7],[6,4,2]),    
+    line_type   = solid,   
+    transparent = false,   
+    fill_color  = violet,   
+    rectangle([-2,-2],[8,-1]),   /* opposite vertices */    
+    transparent = true,   
+    color       = dark_goldenrod,   
+    line_width  = 1,   
+    rectangle([9,4],[2,-1.5]),     
+    transparent = false,   
+    fill_color  = grey80,   
+    line_width  = 2,   
+    ellipse(0,6,3,2,270,-270),  /* center (x,y), a, b, start & end in degrees */    
+    transparent = true,   
+    color       = NaVy,  /* down-upper case doesn't matter */   
+    line_width  = 3,   ellipse(7,6,2,3,30,-90),    
+    xrange      = [-3,10],   
+    yrange      = [-3,9] 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Labels and drawings in 2d:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(   /* the text */   color     = blue,   font      = "Courier-Oblique",   font_size = 9,   label_alignment = left,   label(["En un lugar de la Mancha,",-3,5]),   label(["de cuyo nombre no quiero acordarme,",-3,4]),   label(["no ha mucho tiempo vivia",-3,3]),   label(["un hidalgo ...",-2,2]),    /* the author */   label_orientation = vertical,   label_alignment   = center,   color             = green,   label(["Don Miguel de Cervantes",-4,3.5]),    /* lance */   head_type  = nofilled,   head_angle = 30,   color      = red,   vector([-5,-1],[0,8]),    /* arms and legs */   color         = green,   points_joined = true,   point_size    = 0,   points([[-10,-1],[-9,2],[-8,-1]]),   points([[-9,5],[-9,5.1]]),   points([[-8,4],[-5,5]]),   points([[-10,4],[-11,3],[-10,2.5],[-10.2,2.3]]),    /* body */   fill_color = red,   rectangle([-10,5],[-8,1.8]),    /* head */   transparent = true,   ellipse(-9,6.1,1,1,0,360),    /* eyes */   point_type    = 7,   points_joined = false,   point_size    = 3,   points([[-9.5,6.2],[-8.5,6.2]]),    /* nose and mouth */   point_size    = 0,   points_joined = true,   points([[-9,6.2],[-9,5.8]]),   ellipse(-9,5.8,0.5,0.5,225,90),    /* hat */   transparent = false,   fill_color  = black,   border      = false,   ellipse(-9,7.1,0.8,0.2,0,360),   color       = black,   line_width  = 2,   points([[-9,7.3],[-9,7.4]]),    /* global settings */   xrange     = [-12,10],   yrange     = [-2,8],   dimensions = [500,400],   terminal   = png)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Scaling and rotation
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* original rectangle */ 
+rect : rectangle([0,0],[3,1])$  
+
+/* rotation angle */ 
+th : 2*%pi/3$  
+
+wxdraw2d(    
+    proportional_axes = 'xy,    
+    fill_color        = red,    
+    /* original red rectangle */   
+    rect,     
+
+    fill_color        = blue,    
+    transform         = [x*2,-y,x,y],   
+    rect,     
+
+    fill_color        = yellow,    
+    transform         = [cos(th)*x - sin(th)*y,sin(th)*x + cos(th)*y, x, y],    
+    rect 
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+region
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: subsect start ]
+spherical
+   [wxMaxima: subsect end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
