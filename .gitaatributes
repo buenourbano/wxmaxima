@@ -1,0 +1,7 @@
+# Basic .gitattributes for a Maxima repo.
+
+# Source files
+# ============
+*.mac            text diff=maxima
+*.wxm            text diff=maxima
+*.wxmx           text diff=maxima
